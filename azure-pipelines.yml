@@ -14,18 +14,21 @@ steps:
   inputs:
     versionSpec: '20.x'
   displayName: 'Install Node.js'
-
-- script: |
-    npm install
-    npm run build
-  displayName: 'npm install and build'
+- task: Npm@1
+  inputs:
+    command: 'install'
+    workingDir: './'
+- task: Npm@1
+  inputs:
+    command: 'custom'
+    workingDir: './'
+    customCommand: 'npm run build'
 - task: CopyFiles@2
   inputs:
     Contents: './dist/**'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
-
 - task: PublishBuildArtifacts@1
   inputs:
-      PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-      ArtifactName: 'release'
-      publishLocation: 'Container'
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'release'
+    publishLocation: 'Container'
