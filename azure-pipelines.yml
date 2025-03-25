@@ -1,0 +1,36 @@
+trigger:
+- master  # Trigger the pipeline when changes are pushed to the main branch
+
+pool:
+  vmImage: 'ubuntu-latest'  # Use Ubuntu as the build agent
+
+steps:
+
+# Step 1: Install Node.js
+- task: UseNode@1
+  inputs:
+    version: '20.x'  # Specify the Node.js version
+
+# Step 2: Install dependencies
+- script: |
+    npm install
+  displayName: 'Install dependencies'
+
+# Step 3: Build the project
+- script: |
+    npm run build
+  displayName: 'Build project'
+
+# Step 4: Copy necessary files to the artifact staging directory
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: '$(System.DefaultWorkingDirectory)'  # The root of the repo
+    Contents: '**/*'  # Copy all files
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'  # Target folder for the artifact
+
+# Step 5: Publish the artifact
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'  # Name of the artifact
+    publishLocation: 'Container'
