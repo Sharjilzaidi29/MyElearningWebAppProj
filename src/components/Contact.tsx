@@ -25,7 +25,7 @@ const Contact = () => {
                 <Phone className="h-6 w-6 text-blue-600 mt-1 mr-4" />
                 <div>
                   <h4 className="text-lg font-medium text-gray-900">Phone</h4>
-                  <p className="text-gray-600">+1 (123) 456-7890</p>
+                  <p className="text-gray-600">+91 9885911903</p>
                 </div>
               </div>
               
@@ -33,7 +33,7 @@ const Contact = () => {
                 <Mail className="h-6 w-6 text-blue-600 mt-1 mr-4" />
                 <div>
                   <h4 className="text-lg font-medium text-gray-900">Email</h4>
-                  <p className="text-gray-600">info@anil-it.com</p>
+                  <p className="text-gray-600">aniljada033@gmail.com.com</p>
                 </div>
               </div>
               
@@ -41,7 +41,7 @@ const Contact = () => {
                 <MapPin className="h-6 w-6 text-blue-600 mt-1 mr-4" />
                 <div>
                   <h4 className="text-lg font-medium text-gray-900">Address</h4>
-                  <p className="text-gray-600">123 Tech Street, IT Park, Silicon Valley, CA 94025</p>
+                  <p className="text-gray-600">Building No 11, Hitech city Mindspace madhapur 500081</p>
                 </div>
               </div>
               
