@@ -7,7 +7,9 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+
+// Set the port for Azure Web App
+const PORT = process.env.PORT || 8080;
 
 // Enable gzip compression for all responses
 app.use(compression());
@@ -20,6 +22,8 @@ app.get('*', (req, res) => {
   res.sendFile(join(__dirname, 'dist', 'index.html'));
 });
 
+// Start the server
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log(`Server running at https://devops-web-app-a4hdgre7ekddhmgz.canadacentral-01.azurewebsites.net`);
 });
+
