@@ -1,27 +1,32 @@
-# ELearning Web Application - Azure DevOps CI/CD Pipeline Project
+# Automated Azure DevOps CI/CD Pipeline for E-Learning Web Application
 
-An end-to-end DevOps project demonstrating automated CI/CD pipelines to build and deploy a modern Ed-tech Web Application on Azure App Services (PaaS) using Azure DevOps.
-
----
-
-## 🎯 Project Overview
-This project automates the deployment workflow for an Ed-tech platform (**Anil Technologies**). Whenever developers commit new code updates, continuous integration (CI) and continuous deployment (CD) pipelines automatically trigger to test, build, and deploy the updated application onto cloud infrastructure with zero manual intervention.
+An end-to-end DevOps project implementing an automated CI/CD pipeline to host a mission-critical E-Learning Web Application for **Anil Technologies** on Azure App Services (PaaS).
 
 ---
 
-## 🏗️ Architecture & Workflow
+## 📌 Project Agenda & Overview
+Anil Technologies is a leading Ed-tech company offering online/offline courses for students, interns, and university graduates across South Asian countries. 
+
+To ensure 24/7 availability and zero downtime for the Web Application:
+- Developers commit and push code changes to **Azure Repos**.
+- An automated **Build Pipeline (CI)** pulls the code, builds the project, and generates pipeline artifacts.
+- An automated **Release Pipeline (CD)** deploys the built artifacts directly to **Azure App Services (Linux Web App)** via secure **Service Connections** configured using Microsoft Entra ID.
+
+---
+
+## 🏗️ Architecture & CI/CD Workflow
 
 ```text
-[ Local Dev / On-Prem ] 
-         │
-         ▼ (Git Push)
-[ Azure Repos / GitHub ] 
-         │
-         ▼ (CI Trigger)
-[ Azure Build Pipeline ] ──► (Generates Artifacts)
-         │
-         ▼ (CD Trigger)
-[ Azure Release Pipeline ] 
-         │
-         ▼
-[ Azure App Service (PaaS - Linux) ] ──► (Live Web App)
+[ Developer / Local ]
+        │ (Git Push)
+        ▼
+  [ Azure Repos ]
+        │ (Trigger)
+        ▼
+ [ Build Pipeline ] ──► (Publish Artifact) ──► [ Pipeline Artifact ]
+        │                                              │
+        ▼                                              ▼
+[ Release Pipeline ] ◄──────────────────────────────────┘
+        │ (Automated Deployment)
+        ▼
+[ Azure App Service ] (PaaS / Node 22 LTS Linux)
